@@ -80,11 +80,11 @@ function Project({ mode = 'dark' }: { mode?: string }) {
       <h1 style={{color: colors.title}}>Projects</h1>
       <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div className="project" key={idx} style={{background: colors.cardBg, borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc}}>
+          <div className="project" key={idx} style={{background: '#18181b', border: '1px solid #3f3f46', borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc, borderBottom: '4px solid white'}}>
             <h2 style={{color: colors.title}}>{project.title}</h2>
             <div className="project-tags">
-              {project.tags.map((tag, i) => (
-                <span className="project-tag" key={i}>{tag}</span>
+              {project.tags && project.tags.map((tag: string, i: number) => (
+                <span className="project-tag" key={i} style={{background: 'white', color: '#18181b', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8}}>{tag}</span>
               ))}
             </div>
             <ul>

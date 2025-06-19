@@ -14,9 +14,18 @@ const getColors = (mode: string) =>
         desc: '#222',
       };
 
-const projects = [
+// Define the type for a project
+interface ProjectType {
+  title: string;
+  description: string;
+  image: string;
+  tags?: string[];
+}
+
+const projects: ProjectType[] = [
   {
     title: "Signal Identification with ML & DL",
+    tags: ["Machine Learning", "Deep Learning"],
     description: "Core Tech: XGBoost, LightGBM, MobileNet, Custom CNNs. Developed intelligent signal classification pipelines as part of the ER Security Team. Combined classical ML with deep learning to enhance signal recognition performance. Achieved notable improvements in accuracy through feature engineering and model ensembling, contributing to national-scale signal intelligence workflows.",
     image: "path/to/signal-identification-image.jpg"
   },
@@ -64,9 +73,16 @@ function Projects({ mode = 'dark' }: { mode?: string }) {
       <h1 style={{color: colors.title}}>Featured Projects</h1>
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <div key={index} className="project-card" style={{background: colors.cardBg, borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc}}>
+          <div key={index} className="project-card" style={{background: '#18181b', border: '1px solid #3f3f46', borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc}}>
             <img src={project.image} alt={project.title} style={{borderRadius: 12, marginBottom: 16, width: '100%', objectFit: 'cover'}} />
             <h3 style={{color: colors.title}}>{project.title}</h3>
+            {project.tags && (
+              <div className="project-tags">
+                {project.tags.map((tag: string, i: number) => (
+                  <span className="project-tag" key={i} style={{background: '#232329', color: 'white', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8}}>{tag}</span>
+                ))}
+              </div>
+            )}
             <p style={{color: colors.desc}}>{project.description}</p>
           </div>
         ))}

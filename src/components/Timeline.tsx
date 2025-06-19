@@ -29,10 +29,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           {/* Education */}
           <VerticalTimelineElement
             className="vertical-timeline-element--education"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Aug. 2020 -- Jan 2025"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Sabancı University</h3>
@@ -41,10 +41,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--education"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Sep. 2015 -- Jun 2020"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Notre Dame de Sion French High School</h3>
@@ -57,10 +57,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           {/* Experience */}
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Jan 2025 - Present"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Researcher</h3>
@@ -72,10 +72,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="July 2024 - Jan 2025"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Research Intern</h3>
@@ -88,10 +88,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Feb. 2023 - Jun. 2023"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Learning Assistant (CS201)</h3>
@@ -103,10 +103,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Jan. 2023 - Feb. 2023"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Software Engineering Intern</h3>
@@ -118,10 +118,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Aug 2022 - Sep 2022"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Software Engineering Intern</h3>
@@ -133,10 +133,10 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: colors.cardBg, color: colors.desc, borderRadius: 18 }}
-            contentArrowStyle={{ borderRight: `7px solid ${colors.cardBg}` }}
+            contentStyle={{ background: '#18181b', color: colors.desc, borderRadius: 18, border: '1px solid #3f3f46' }}
+            contentArrowStyle={{ borderRight: `7px solid #18181b` }}
+            iconStyle={{ background: '#000', color: 'white', boxShadow: '0 0 0 6px #000', border: '4px solid #fff' }}
             date="Feb. 2022 - Jun. 2022"
-            iconStyle={{ background: '#5000ca', color: 'white' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title" style={{color: colors.title}}>Learning Assistant (Calculus-II)</h3>

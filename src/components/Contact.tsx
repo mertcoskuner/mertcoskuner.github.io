@@ -15,8 +15,8 @@ const getColors = (mode: string) =>
         inputBg: '#23262F',
         inputBorder: '#333',
         inputText: '#fff',
-        buttonBg: '#5000ca',
-        buttonText: '#fff',
+        buttonBg: 'white',
+        buttonText: 'white',
       }
     : {
         cardBg: 'rgba(0,0,0,0.04)',
@@ -25,8 +25,8 @@ const getColors = (mode: string) =>
         inputBg: '#fff',
         inputBorder: '#ccc',
         inputText: '#222',
-        buttonBg: '#5000ca',
-        buttonText: '#fff',
+        buttonBg: 'white',
+        buttonText: 'white',
       };
 
 function Contact({ mode = 'dark' }: { mode?: string }) {
@@ -77,7 +77,7 @@ function Contact({ mode = 'dark' }: { mode?: string }) {
   return (
     <div id="contact">
       <div className="items-container">
-        <div className="contact_wrapper" style={{background: colors.cardBg, borderRadius: 18, padding: '2.5rem 2rem'}}>
+        <div className="contact_wrapper" style={{background: '#18181b', border: '1px solid #3f3f46', borderRadius: 18, padding: '2.5rem 2rem', borderBottom: '4px solid white'}}>
           <h1 style={{color: colors.title}}>Contact Me</h1>
           <p style={{color: colors.desc}}>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
           <Box
