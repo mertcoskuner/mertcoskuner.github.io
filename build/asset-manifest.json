@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mertcoskuner.github.io./static/css/main.93558cb8.css",
+    "main.js": "/mertcoskuner.github.io./static/js/main.d95c937f.js",
+    "static/js/453.b05d8aa5.chunk.js": "/mertcoskuner.github.io./static/js/453.b05d8aa5.chunk.js",
+    "static/media/bg-light.png": "/mertcoskuner.github.io./static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/bg-dark.png": "/mertcoskuner.github.io./static/media/bg-dark.f420c6b8458af72de935.png",
+    "index.html": "/mertcoskuner.github.io./index.html",
+    "main.93558cb8.css.map": "/mertcoskuner.github.io./static/css/main.93558cb8.css.map",
+    "main.d95c937f.js.map": "/mertcoskuner.github.io./static/js/main.d95c937f.js.map",
+    "453.b05d8aa5.chunk.js.map": "/mertcoskuner.github.io./static/js/453.b05d8aa5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93558cb8.css",
+    "static/js/main.d95c937f.js"
+  ]
+}
