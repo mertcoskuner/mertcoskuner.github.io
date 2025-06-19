@@ -8,7 +8,7 @@ function Main() {
     <div className="container">
       <div className="about-section">
         <div className="image-wrapper">
-          <img src="https://placehold.co/150x150?text=Mert" alt="Mert Coşkuner" />
+          {/* <img src="https://placehold.co/150x150?text=Mert" alt="Mert Coşkuner" /> */}
         </div>
         <div className="content">
           <div className="social_icons">
