@@ -4,15 +4,15 @@ import '../assets/styles/Project.scss';
 const getColors = (mode: string) =>
   mode === 'dark'
     ? {
-        cardBg: 'rgba(255,255,255,0.02)',
-        title: 'white',
-        desc: '#e0e0e0',
-      }
+      cardBg: 'rgba(255,255,255,0.02)',
+      title: 'white',
+      desc: '#e0e0e0',
+    }
     : {
-        cardBg: 'rgba(0,0,0,0.04)',
-        title: '#0d1116',
-        desc: '#222',
-      };
+      cardBg: 'rgba(0,0,0,0.04)',
+      title: '#0d1116',
+      desc: '#222',
+    };
 
 const projects = [
   {
@@ -77,19 +77,19 @@ function Project({ mode = 'dark' }: { mode?: string }) {
   const colors = getColors(mode);
   return (
     <div className="projects-container" id="projects">
-      <h1 style={{color: colors.title}}>Projects</h1>
+      <h1 style={{ color: colors.title }}>Projects</h1>
       <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div className="project" key={idx} style={{background: '#18181b', border: '1px solid #3f3f46', borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc, borderBottom: '4px solid white'}}>
-            <h2 style={{color: colors.title}}>{project.title}</h2>
+          <div className="project" key={idx}>
+            <h2 style={{ color: 'var(--text-primary)' }}>{project.title}</h2>
             <div className="project-tags">
               {project.tags && project.tags.map((tag: string, i: number) => (
-                <span className="project-tag" key={i} style={{background: 'white', color: '#18181b', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8}}>{tag}</span>
+                <span className="project-tag" key={i} style={{ background: 'var(--accent-color)', color: 'white', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8 }}>{tag}</span>
               ))}
             </div>
             <ul>
               {project.description.map((desc, i) => (
-                <li key={i} style={{color: colors.desc}}>{desc}</li>
+                <li key={i}>{desc}</li>
               ))}
             </ul>
           </div>

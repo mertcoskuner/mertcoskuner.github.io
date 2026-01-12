@@ -1,6 +1,8 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogleScholar, faMedium } from '@fortawesome/free-brands-svg-icons';
 import '../assets/styles/Main.scss';
 
 function Main() {
@@ -27,12 +29,16 @@ function Main() {
             <h1>Mert Coşkuner</h1>
             <p>AI Researcher & Developer</p>
             <div className="social_icons">
-              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon /></a>
+              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
+              <a href="https://scholar.google.com/citations?user=ExampleID" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGoogleScholar} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
+              <a href="https://medium.com/@mertcoskuner" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faMedium} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
             </div>
             <div className="mobile_social_icons">
-              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon /></a>
+              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
+              <a href="https://scholar.google.com/citations?user=ExampleID" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGoogleScholar} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
+              <a href="https://medium.com/@mertcoskuner" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faMedium} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
             </div>
           </div>
         </div>

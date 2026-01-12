@@ -1,12 +1,105 @@
+/* Global CSS Variables for Soft Modern Theme */
+:root {
+  --border-radius-lg: 20px;
+}
+
+body.light-mode {
+  --primary-color: #e3f2fd;
+  --bg-color: #fcfcfc;
+  --text-primary: #37474f;
+  --text-secondary: #78909c;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  --accent-color: #2563eb;
+  /* Vibrant Blue */
+  --bg-pattern: radial-gradient(#9ca3af 1px, transparent 1px);
+  /* Darker gray dots */
+
+  /* Global Card Borders for Light Mode */
+  .expertise-card,
+  .project,
+  .card,
+  .box,
+  .experience-box,
+  .project-card,
+  .vertical-timeline-element-content {
+    border: 1px solid #cbd5e1 !important;
+    /* Blue-ish gray border */
+  }
+}
+
+body.dark-mode {
+  --primary-color: #0d1116;
+  --bg-color: #000000;
+  /* Jet Black */
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --card-bg: #111111;
+  /* Slightly lighter than jet black for separation */
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --accent-color: #2563eb;
+  /* Blue for Dark Mode as well */
+  --bg-pattern: radial-gradient(#333333 1px, transparent 1px);
+  /* Dark gray dots */
+
+  /* Timeline Specific Overrides */
+  .vertical-timeline-element-content {
+    background: rgba(20, 20, 20, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-soft) !important;
+  }
+
+  .vertical-timeline-element-content-arrow {
+    border-right: 7px solid rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .vertical-timeline-element-icon {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-soft) !important;
+  }
+
+  /* Transparent/Glassy Borders for Dark Mode */
+  .expertise-card,
+  .project,
+  .card,
+  .box,
+  .experience-box,
+  .project-card {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    /* Visible transparency */
+    background: rgba(20, 20, 20, 0.6) !important;
+    /* Glassy background */
+  }
+
+  /* Fix Project Text to be White */
+  .project h2 {
+    color: #ffffff !important;
+  }
+
+  .project p,
+  .project li,
+  .project ul {
+    color: #f0f0f0 !important;
+  }
+}
+
 body {
-  background: #000000 url('/bg-light.png') no-repeat center center fixed !important;
-  background-size: cover !important;
+  background-color: var(--bg-color) !important;
+  background-image: var(--bg-pattern);
+  background-size: 30px 30px;
+  /* Spacing */
+  background-attachment: fixed;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
   font-size: 1.1rem !important;
 }
 
@@ -17,44 +110,73 @@ code {
 
 a {
   text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: white;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  color: var(--accent-color);
 }
 
-p, a, h1, h2, h3, h4, h5, label, button {
-  color: white;
-  font-family: "Lato", sans-serif;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+button {
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  /* Modern, geometric font */
 }
 
+/* Glassmorphism Navigation */
 .navigation-bar {
-  justify-content: space-between;
-  background-color: #000 !important;
-  box-shadow: none !important;
+  background-color: var(--nav-bg) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   button {
-    font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
+    color: var(--text-primary) !important;
+    font-size: 1rem;
+    font-weight: 500;
     text-transform: initial;
-    padding: 6px 10px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(80, 0, 202, 0.05) !important;
+      color: var(--accent-color) !important;
+    }
   }
 
   svg {
+    color: var(--text-primary);
     cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-color);
+    }
   }
 }
 
 .navigation-bar-responsive {
-  span, p {
-    color: #0d1116;
-    font-family: "Lato", sans-serif;
+
+  span,
+  p {
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 .container {
-  margin-top: 64px;
+  margin-top: 80px;
+  /* Adjusted for larger header */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -79,6 +201,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   align-items: center;
   gap: 5px;
   font-weight: bold;
+  color: var(--text-primary);
 }
 
 .items-container {
@@ -89,57 +212,36 @@ p, a, h1, h2, h3, h4, h5, label, button {
   justify-content: center;
 }
 
+/* Light Mode (Default) Overrides/Adjustments */
 .light-mode {
-  background-color: #f8f9fa;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
 
   .navigation-bar {
-    background-color: #f8f9fa;
+    background-color: var(--nav-bg);
   }
 
-  p, a, h1, h2, h3, h4, h5, label, button {
-    color: #0d1116;
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  label,
+  button {
+    color: var(--text-primary);
   }
 
-  a:hover {
-    color: #5000ca;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-  }
-
-  .navigation-bar svg {
-    color: #0d1116;
-  }
-
-  .about-section {
-    background-image: url("./assets/images/bg-light.png");
-  }
-
-  .skills-container svg {
-    color: #0d1116;
+  /* Update secondary text colors */
+  .vertical-timeline-element-date {
+    color: var(--text-secondary) !important;
   }
 
   .chip {
-    background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .vertical-timeline::before {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
-    color: gray;
-  }
-
-  .vertical-timeline-element-content-arrow {
-    border-right: 7px solid rgba(0, 0, 0, 0.08) !important;
-  }
-
-  .flex-chips .chip-title {
-    color: #0d1116;
+    background-color: white;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -151,39 +253,56 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 }
 
+
 .navigation-bar svg {
-  color: white !important;
+  color: var(--text-primary) !important;
 }
 
-button, .MuiButton-root {
-  color: white !important;
+button,
+.MuiButton-root {
+  color: var(--text-primary) !important;
   background: transparent !important;
 }
 
-.card, .box, .experience-box, .about-section, .project-card, .contact_wrapper {
-  background: #18181b;
-  border: 1px solid #3f3f46;
-  border-radius: 18px;
-  color: #e0e0e0;
+.card,
+.box,
+.experience-box,
+.about-section,
+.project-card,
+.contact_wrapper {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-soft);
 }
 
-h1, h2, h3, h4 {
-  color: #fff;
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-primary);
 }
 
-p, li, span, label, input, textarea {
-  color: #e0e0e0;
+p,
+li,
+span,
+label,
+input,
+textarea {
+  color: var(--text-primary);
 }
 
 ::placeholder {
-  color: #888 !important;
+  color: var(--text-secondary) !important;
   opacity: 1;
 }
 
 .expertise-card {
-  background: #000 !important;
-  border: 1px solid #3f3f46 !important;
-  border-radius: 18px !important;
-  color: #e0e0e0 !important;
-  border-bottom: 4px solid #fff !important;
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  border-radius: var(--border-radius-lg) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 4px solid var(--accent-color) !important;
+  box-shadow: var(--shadow-soft) !important;
 }

@@ -4,15 +4,15 @@ import '../assets/styles/Projects.scss';
 const getColors = (mode: string) =>
   mode === 'dark'
     ? {
-        cardBg: 'rgba(255,255,255,0.02)',
-        title: 'white',
-        desc: '#e0e0e0',
-      }
+      cardBg: 'rgba(255,255,255,0.02)',
+      title: 'white',
+      desc: '#e0e0e0',
+    }
     : {
-        cardBg: 'rgba(0,0,0,0.04)',
-        title: '#0d1116',
-        desc: '#222',
-      };
+      cardBg: 'rgba(0,0,0,0.04)',
+      title: '#0d1116',
+      desc: '#222',
+    };
 
 // Define the type for a project
 interface ProjectType {
@@ -70,20 +70,20 @@ function Projects({ mode = 'dark' }: { mode?: string }) {
   const colors = getColors(mode);
   return (
     <div className="container" id="projects">
-      <h1 style={{color: colors.title}}>Featured Projects</h1>
+      <h1 style={{ color: colors.title }}>Featured Projects</h1>
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <div key={index} className="project-card" style={{background: '#18181b', border: '1px solid #3f3f46', borderRadius: 18, padding: '2rem 1.5rem', color: colors.desc}}>
-            <img src={project.image} alt={project.title} style={{borderRadius: 12, marginBottom: 16, width: '100%', objectFit: 'cover'}} />
-            <h3 style={{color: colors.title}}>{project.title}</h3>
+          <div key={index} className="project-card">
+            <img src={project.image} alt={project.title} style={{ borderRadius: 12, marginBottom: 16, width: '100%', objectFit: 'cover' }} />
+            <h3>{project.title}</h3>
             {project.tags && (
               <div className="project-tags">
                 {project.tags.map((tag: string, i: number) => (
-                  <span className="project-tag" key={i} style={{background: '#232329', color: 'white', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8}}>{tag}</span>
+                  <span className="project-tag" key={i} style={{ background: 'var(--accent-color)', color: 'white', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8 }}>{tag}</span>
                 ))}
               </div>
             )}
-            <p style={{color: colors.desc}}>{project.description}</p>
+            <p>{project.description}</p>
           </div>
         ))}
       </div>
