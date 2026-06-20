@@ -16,7 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
 const drawerWidth = 260;
-const navItems = [['Expertise', 'expertise'], ['Journey', 'history'], ['Projects', 'projects']];
+const navItems = [['About', 'about'], ['Expertise', 'expertise'], ['Journey', 'history'], ['Projects', 'projects']];
 
 function Navigation({ parentToChild, modeChange }: any) {
 
@@ -24,6 +24,7 @@ function Navigation({ parentToChild, modeChange }: any) {
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [active, setActive] = useState<string>('');
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -35,6 +36,22 @@ function Navigation({ parentToChild, modeChange }: any) {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item[1]))
+      .filter((el): el is HTMLElement => el !== null);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (section: string) => {
@@ -68,7 +85,7 @@ function Navigation({ parentToChild, modeChange }: any) {
 
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
             {navItems.map((item) => (
-              <Button key={item[0]} className="nav-link" onClick={() => scrollToSection(item[1])}>
+              <Button key={item[0]} className={`nav-link${active === item[1] ? ' active' : ''}`} onClick={() => scrollToSection(item[1])}>
                 {item[0]}
               </Button>
             ))}

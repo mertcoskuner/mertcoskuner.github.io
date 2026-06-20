@@ -68,7 +68,8 @@ function Project({ mode = 'dark' }: { mode?: string }) {
       <p className="section-lead">A selection of research and engineering projects across ML, deep learning, NLP and security.</p>
       <div className="projects-grid">
         {projects.map((project, idx) => (
-          <article className="project reveal" key={idx}>
+          <article className="project reveal spotlight" key={idx}>
+            <span className="card-glow" aria-hidden="true" />
             <div className="project-tags">
               {project.tags && project.tags.map((tag: string, i: number) => (
                 <span className="project-tag" key={i}>{tag}</span>
