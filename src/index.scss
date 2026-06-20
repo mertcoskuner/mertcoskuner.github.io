@@ -502,6 +502,43 @@ a:hover {
 }
 
 /* ============================================================
+   Floating back-to-top button
+   ============================================================ */
+.scroll-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--gradient);
+  border: none;
+  cursor: pointer;
+  z-index: 1200;
+  box-shadow: 0 14px 34px -12px rgba(var(--accent-rgb), 0.7);
+  opacity: 0;
+  transform: translateY(20px) scale(0.85);
+  pointer-events: none;
+  transition: all 0.35s var(--ease);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================================
    Footer / responsive
    ============================================================ */
 @media (max-width: 768px) {
