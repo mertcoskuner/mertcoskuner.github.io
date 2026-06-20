@@ -9,7 +9,7 @@ import '../assets/styles/Footer.scss';
 const links = [
   { href: "https://github.com/mertcoskuner", label: "GitHub", node: <GitHubIcon /> },
   { href: "https://linkedin.com/in/mertcoskuner", label: "LinkedIn", node: <LinkedInIcon /> },
-  { href: "https://scholar.google.com/citations?user=ExampleID", label: "Scholar", node: <FontAwesomeIcon icon={faGoogleScholar} /> },
+  { href: "https://scholar.google.com/scholar?q=Mert+Co%C5%9Fkuner", label: "Scholar", node: <FontAwesomeIcon icon={faGoogleScholar} /> },
   { href: "https://medium.com/@mertcoskuner", label: "Medium", node: <FontAwesomeIcon icon={faMedium} /> },
   { href: "mailto:mertcoskuner@gmail.com", label: "Email", node: <EmailIcon /> },
 ];

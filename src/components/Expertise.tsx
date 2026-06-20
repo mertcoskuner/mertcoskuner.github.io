@@ -38,7 +38,8 @@ const Expertise: React.FC<ExpertiseProps> = () => {
 
       <div className="expertise-grid">
         {expertiseData.map((exp, idx) => (
-          <article key={idx} className="expertise-card reveal">
+          <article key={idx} className="expertise-card reveal spotlight">
+            <span className="card-glow" aria-hidden="true" />
             <div className="expertise-icon">{exp.icon}</div>
             <h3>{exp.title}</h3>
             <p>{exp.summary}</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
     Main,
+    About,
     Timeline,
     Expertise,
     Project,
@@ -17,6 +18,7 @@ function getInitialMode(): string {
 
 function App() {
     const [mode, setMode] = useState<string>(getInitialMode);
+    const [progress, setProgress] = useState<number>(0);
 
     const handleModeChange = () => {
         setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -27,8 +29,19 @@ function App() {
         document.body.classList.toggle('light-mode', mode !== 'dark');
         localStorage.setItem('theme', mode);
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', mode === 'dark' ? '#07070c' : '#f6f7fb');
+        if (meta) meta.setAttribute('content', mode === 'dark' ? '#060a0d' : '#f6f7fb');
     }, [mode]);
+
+    // Scroll progress bar
+    useEffect(() => {
+        const onScroll = () => {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            setProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     // Reveal sections on scroll
     useEffect(() => {
@@ -48,10 +61,28 @@ function App() {
         return () => observer.disconnect();
     }, []);
 
+    // Spotlight (mouse-follow glow) on cards
+    useEffect(() => {
+        const cards = Array.from(document.querySelectorAll<HTMLElement>('.spotlight'));
+        const handlers: Array<[HTMLElement, (e: MouseEvent) => void]> = [];
+        cards.forEach((card) => {
+            const onMove = (e: MouseEvent) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+            };
+            card.addEventListener('mousemove', onMove);
+            handlers.push([card, onMove]);
+        });
+        return () => handlers.forEach(([card, fn]) => card.removeEventListener('mousemove', fn));
+    }, []);
+
     return (
         <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+            <div className="scroll-progress" style={{ transform: `scaleX(${progress})` }} />
             <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
             <Main />
+            <About />
             <Expertise mode={mode} />
             <Timeline mode={mode} />
             <Project mode={mode} />
