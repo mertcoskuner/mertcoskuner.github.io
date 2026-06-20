@@ -87,6 +87,13 @@ function App() {
             <Timeline mode={mode} />
             <Project mode={mode} />
             <Footer />
+            <button
+                className={`scroll-top${progress > 0.15 ? ' visible' : ''}`}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                aria-label="Back to top"
+            >
+                ↑
+            </button>
         </div>
     );
 }
