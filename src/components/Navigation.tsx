@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -16,8 +15,8 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
-const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['History', 'history'], ['Projects', 'projects']];
+const drawerWidth = 260;
+const navItems = [['Expertise', 'expertise'], ['Journey', 'history'], ['Projects', 'projects']];
 
 function Navigation({ parentToChild, modeChange }: any) {
 
@@ -32,29 +31,15 @@ function Navigation({ parentToChild, modeChange }: any) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const navbar = document.getElementById("navigation");
-      if (navbar) {
-        const scrolled = window.scrollY > navbar.clientHeight;
-        setScrolled(scrolled);
-      }
+      setScrolled(window.scrollY > 40);
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (section: string) => {
-    console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
-    } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
-    }
+    const el = document.getElementById(section);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const drawer = (
@@ -75,29 +60,36 @@ function Navigation({ parentToChild, modeChange }: any) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`} sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-        <Toolbar className='navigation-bar'>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()} />
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()} />
-          )}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`} sx={{ backgroundColor: 'transparent', boxShadow: 'none' }} elevation={0}>
+        <Toolbar className='navigation-bar' disableGutters>
+          <span className="nav-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="nav-dot" /> Mert Coşkuner
+          </span>
+
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
             {navItems.map((item) => (
-              <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: 'var(--text-primary)' }}>
+              <Button key={item[0]} className="nav-link" onClick={() => scrollToSection(item[1])}>
                 {item[0]}
               </Button>
             ))}
+            <IconButton className="theme-toggle" onClick={() => modeChange()} aria-label="Toggle theme">
+              {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+          </Box>
+
+          <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', marginLeft: 'auto' }}>
+            <IconButton className="theme-toggle" onClick={() => modeChange()} aria-label="Toggle theme">
+              {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+            <IconButton
+              className="nav-burger"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ ml: 1 }}
+            >
+              <MenuIcon />
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
@@ -106,9 +98,7 @@ function Navigation({ parentToChild, modeChange }: any) {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+          ModalProps={{ keepMounted: true }}
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },

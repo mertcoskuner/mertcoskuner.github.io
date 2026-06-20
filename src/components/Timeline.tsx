@@ -10,7 +10,8 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
   return (
     <div id="history">
       <div className="items-container">
-        <h1 className="section-title">Education</h1>
+        <span className="section-eyebrow">Where I've been</span>
+        <h2 className="section-title">Education</h2>
         <VerticalTimeline>
           {/* Education */}
           <VerticalTimelineElement
@@ -41,7 +42,7 @@ function Timeline({ mode = 'dark' }: { mode?: string }) {
             <p>French Baccalauréat equivalent high school diploma</p>
           </VerticalTimelineElement>
         </VerticalTimeline>
-        <h1 className="section-title" style={{ marginTop: '3rem' }}>Experience</h1>
+        <h2 className="section-title" style={{ marginTop: '4rem' }}>Experience</h2>
         <VerticalTimeline>
           {/* Experience */}
           <VerticalTimelineElement

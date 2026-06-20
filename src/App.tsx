@@ -7,43 +7,54 @@ import {
     Navigation,
     Footer,
 } from "./components";
-import FadeIn from './components/FadeIn';
 import './index.scss';
 
+function getInitialMode(): string {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 function App() {
-    const [mode, setMode] = useState<string>('light');
+    const [mode, setMode] = useState<string>(getInitialMode);
 
     const handleModeChange = () => {
-        if (mode === 'dark') {
-            setMode('light');
-        } else {
-            setMode('dark');
-        }
-    }
+        setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    };
 
     useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, []);
-
-    useEffect(() => {
-        if (mode === 'dark') {
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
-        } else {
-            document.body.classList.add('light-mode');
-            document.body.classList.remove('dark-mode');
-        }
+        document.body.classList.toggle('dark-mode', mode === 'dark');
+        document.body.classList.toggle('light-mode', mode !== 'dark');
+        localStorage.setItem('theme', mode);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', mode === 'dark' ? '#07070c' : '#f6f7fb');
     }, [mode]);
+
+    // Reveal sections on scroll
+    useEffect(() => {
+        const els = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+        );
+        els.forEach((el) => observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
             <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-            <FadeIn transitionDuration={700}>
-                <Main />
-                <Expertise mode={mode} />
-                <Timeline mode={mode} />
-                <Project mode={mode} />
-            </FadeIn>
+            <Main />
+            <Expertise mode={mode} />
+            <Timeline mode={mode} />
+            <Project mode={mode} />
             <Footer />
         </div>
     );

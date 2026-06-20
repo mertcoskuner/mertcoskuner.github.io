@@ -1,49 +1,62 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogleScholar, faMedium } from '@fortawesome/free-brands-svg-icons';
 import '../assets/styles/Main.scss';
 
+const socials = [
+  { href: "https://github.com/mertcoskuner", label: "GitHub", node: <GitHubIcon /> },
+  { href: "https://linkedin.com/in/mertcoskuner", label: "LinkedIn", node: <LinkedInIcon /> },
+  { href: "https://scholar.google.com/citations?user=ExampleID", label: "Google Scholar", node: <FontAwesomeIcon icon={faGoogleScholar} /> },
+  { href: "https://medium.com/@mertcoskuner", label: "Medium", node: <FontAwesomeIcon icon={faMedium} /> },
+];
+
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
 function Main() {
   return (
-    <div className="container">
-      <div className="about-section">
-        <div className="image-wrapper">
-          {/* <img src="https://placehold.co/150x150?text=Mert" alt="Mert Coşkuner" /> */}
+    <header className="hero" id="home">
+      <div className="hero-inner">
+        <span className="hero-badge">
+          <span className="hero-badge-dot" /> Available for research &amp; collaboration
+        </span>
+
+        <h1 className="hero-title">
+          Hi, I'm <span className="gradient-text">Mert Coşkuner</span>
+        </h1>
+
+        <p className="hero-subtitle">
+          AI Researcher &amp; Developer — building scalable machine&nbsp;learning,
+          MLOps and data&nbsp;engineering systems.
+        </p>
+
+        <div className="hero-actions">
+          <button className="btn btn-primary" onClick={() => scrollTo('projects')}>
+            View my work
+          </button>
+          <button className="btn btn-ghost" onClick={() => scrollTo('history')}>
+            My journey
+          </button>
         </div>
-        <div className="content" style={{ position: 'relative' }}>
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '100%',
-            height: '100%',
-            zIndex: 1,
-            opacity: 0.13,
-            pointerEvents: 'none',
-            background: 'url(/bg-light.png) center/contain no-repeat',
-          }} />
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <h1>Mert Coşkuner</h1>
-            <p>AI Researcher & Developer</p>
-            <div className="social_icons">
-              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon /></a>
-              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
-              <a href="https://scholar.google.com/citations?user=ExampleID" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGoogleScholar} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
-              <a href="https://medium.com/@mertcoskuner" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faMedium} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
-            </div>
-            <div className="mobile_social_icons">
-              <a href="https://github.com/mertcoskuner" target="_blank" rel="noreferrer"><GitHubIcon /></a>
-              <a href="https://linkedin.com/in/mertcoskuner" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
-              <a href="https://scholar.google.com/citations?user=ExampleID" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGoogleScholar} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
-              <a href="https://medium.com/@mertcoskuner" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faMedium} style={{ fontSize: '1.5rem', marginBottom: '2px' }} /></a>
-            </div>
-          </div>
+
+        <div className="hero-socials">
+          {socials.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+              {s.node}
+            </a>
+          ))}
         </div>
       </div>
-    </div>
+
+      <button className="hero-scroll" onClick={() => scrollTo('expertise')} aria-label="Scroll down">
+        <span>Scroll</span>
+        <ArrowDownwardIcon />
+      </button>
+    </header>
   );
 }
 

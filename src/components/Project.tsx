@@ -1,19 +1,6 @@
 import React from "react";
 import '../assets/styles/Project.scss';
 
-const getColors = (mode: string) =>
-  mode === 'dark'
-    ? {
-      cardBg: 'rgba(255,255,255,0.02)',
-      title: 'white',
-      desc: '#e0e0e0',
-    }
-    : {
-      cardBg: 'rgba(0,0,0,0.04)',
-      title: '#0d1116',
-      desc: '#222',
-    };
-
 const projects = [
   {
     title: "Signal Identification with ML & DL",
@@ -74,28 +61,27 @@ const projects = [
 ];
 
 function Project({ mode = 'dark' }: { mode?: string }) {
-  const colors = getColors(mode);
   return (
-    <div className="projects-container" id="projects">
-      <h1 style={{ color: colors.title }}>Projects</h1>
+    <section className="projects-container" id="projects">
+      <span className="section-eyebrow">Selected work</span>
+      <h2 className="section-title">Projects</h2>
+      <p className="section-lead">A selection of research and engineering projects across ML, deep learning, NLP and security.</p>
       <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div className="project" key={idx}>
-            <h2 style={{ color: 'var(--text-primary)' }}>{project.title}</h2>
+          <article className="project reveal" key={idx}>
             <div className="project-tags">
               {project.tags && project.tags.map((tag: string, i: number) => (
-                <span className="project-tag" key={i} style={{ background: 'var(--accent-color)', color: 'white', borderRadius: 8, padding: '0.2em 0.8em', fontWeight: 600, marginRight: 8 }}>{tag}</span>
+                <span className="project-tag" key={i}>{tag}</span>
               ))}
             </div>
-            <ul>
-              {project.description.map((desc, i) => (
-                <li key={i}>{desc}</li>
-              ))}
-            </ul>
-          </div>
+            <h3>{project.title}</h3>
+            {project.description.map((desc, i) => (
+              <p key={i}>{desc}</p>
+            ))}
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

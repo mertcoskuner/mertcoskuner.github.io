@@ -1,18 +1,102 @@
-footer {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background-color: var(--primary-color);
-    color: var(--text-primary);
+.site-footer {
+  position: relative;
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  padding: 4rem 1.5rem 3rem;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+
+  .nav-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--gradient);
+    box-shadow: 0 0 14px var(--accent);
+  }
+}
+
+.footer-tagline {
+  color: var(--text-muted);
+  margin: 0.8rem 0 0;
+  font-size: 1.02rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.7rem;
+
+  a {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all 0.3s var(--ease);
 
     svg {
-        width: 1.1em !important;
-        height: 1.1em !important;
-        margin-right: 10px;
-        color: var(--text-primary);
+      font-size: 1.3rem;
+      width: 1.3rem;
+      height: 1.3rem;
     }
 
-    p {
-        font-size: 0.8em;
+    &:hover {
+      transform: translateY(-4px);
+      color: var(--accent);
+      border-color: var(--accent);
     }
+  }
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem 1.5rem;
+  width: 100%;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+
+  p {
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+}
+
+.footer-top-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  transition: color 0.3s var(--ease);
+
+  &:hover {
+    color: var(--accent);
+  }
 }
