@@ -4,13 +4,6 @@
    ============================================================ */
 
 :root {
-  /* Brand accent — shared across both themes */
-  --accent: #6d5efc;
-  --accent-2: #a855f7;
-  --accent-3: #ec4899;
-  --gradient: linear-gradient(135deg, #6d5efc 0%, #a855f7 50%, #ec4899 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(109, 94, 252, 0.16), rgba(168, 85, 247, 0.16));
-
   /* Radii */
   --radius-sm: 12px;
   --radius: 18px;
@@ -26,6 +19,15 @@
 
 /* ---------- Light theme ---------- */
 body.light-mode {
+  /* Brand accent — Violet */
+  --accent: #6d5efc;
+  --accent-2: #a855f7;
+  --accent-3: #ec4899;
+  --accent-rgb: 109, 94, 252;
+  --on-accent: #ffffff;
+  --gradient: linear-gradient(135deg, #6d5efc 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(109, 94, 252, 0.16), rgba(168, 85, 247, 0.16));
+
   --bg: #f6f7fb;
   --bg-soft: #ffffff;
   --bg-elevated: #ffffff;
@@ -45,25 +47,34 @@ body.light-mode {
   --grid-line: rgba(20, 24, 40, 0.045);
 }
 
-/* ---------- Dark theme ---------- */
+/* ---------- Dark theme — Aurora Teal ---------- */
 body.dark-mode {
-  --bg: #07070c;
-  --bg-soft: #0d0d15;
-  --bg-elevated: #12121d;
-  --text: #ecedf5;
-  --text-muted: #a4a8bd;
-  --text-faint: #6b7088;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --card-bg: rgba(255, 255, 255, 0.035);
-  --nav-bg: rgba(10, 10, 18, 0.62);
-  --chip-bg: rgba(140, 124, 255, 0.14);
-  --chip-text: #c4baff;
+  /* Brand accent — Teal -> Cyan -> Sky */
+  --accent: #2dd4bf;
+  --accent-2: #22d3ee;
+  --accent-3: #38bdf8;
+  --accent-rgb: 45, 212, 191;
+  --on-accent: #04171a;
+  --gradient: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 48%, #38bdf8 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(45, 212, 191, 0.16), rgba(56, 189, 248, 0.16));
+
+  --bg: #060a0d;
+  --bg-soft: #0a1015;
+  --bg-elevated: #0f161c;
+  --text: #e8f1f2;
+  --text-muted: #9bb0b6;
+  --text-faint: #647a82;
+  --border: rgba(170, 230, 235, 0.1);
+  --border-strong: rgba(170, 230, 235, 0.2);
+  --card-bg: rgba(150, 230, 230, 0.035);
+  --nav-bg: rgba(7, 13, 16, 0.62);
+  --chip-bg: rgba(45, 212, 191, 0.13);
+  --chip-text: #7fe9dd;
   --shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
-  --shadow-hover: 0 30px 80px -30px rgba(109, 94, 252, 0.5);
-  --glow-1: rgba(109, 94, 252, 0.28);
-  --glow-2: rgba(236, 72, 153, 0.18);
-  --grid-line: rgba(255, 255, 255, 0.03);
+  --shadow-hover: 0 30px 80px -30px rgba(45, 212, 191, 0.45);
+  --glow-1: rgba(45, 212, 191, 0.26);
+  --glow-2: rgba(56, 189, 248, 0.2);
+  --grid-line: rgba(180, 235, 235, 0.035);
 }
 
 /* ============================================================
@@ -133,7 +144,7 @@ a:hover {
 }
 
 ::selection {
-  background: rgba(109, 94, 252, 0.28);
+  background: rgba(var(--accent-rgb), 0.28);
   color: var(--text);
 }
 
@@ -359,14 +370,15 @@ a:hover {
 
 .btn-primary {
   background: var(--gradient);
-  color: #fff !important;
-  box-shadow: 0 16px 40px -16px rgba(109, 94, 252, 0.7);
+  color: var(--on-accent) !important;
+  font-weight: 700;
+  box-shadow: 0 16px 40px -16px rgba(var(--accent-rgb), 0.7);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 24px 50px -16px rgba(109, 94, 252, 0.85);
-  color: #fff !important;
+  box-shadow: 0 24px 50px -16px rgba(var(--accent-rgb), 0.9);
+  color: var(--on-accent) !important;
 }
 
 .btn-ghost {
