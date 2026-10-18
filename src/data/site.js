@@ -22,6 +22,25 @@ export const interests = [
   "Multilingual and Turkish language models",
 ];
 
+export const publications = [
+  {
+    year: "2026",
+    title:
+      "Aggressive, Imperceptible, or Both: Architecture-Aware Hybrid Byzantines in Federated Learning",
+    authors: [
+      "Emre Özfatura",
+      "Kerem Özfatura",
+      "Baturalp Büyükateş",
+      "Mert Coşkuner",
+      "Alptekin Küpçü",
+      "Deniz Gündüz",
+    ],
+    venue: "IEEE European Symposium on Security and Privacy (EuroS&P 2026)",
+    href: "https://doi.org/10.1109/EuroSP68448.2026.00052",
+    links: [{ label: "arXiv", href: "https://arxiv.org/abs/2404.06230" }],
+  },
+];
+
 export const projects = [
   {
     slug: "structure-aware-fedala",

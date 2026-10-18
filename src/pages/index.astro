@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
-import { education, experience, interests, links, profile, projects, teaching } from "../data/site.js";
+import { education, experience, interests, links, profile, projects, publications, teaching } from "../data/site.js";
 
 const featured = projects.filter((project) => project.featured);
 const current = [
@@ -51,6 +51,31 @@ const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
         {interests.map((item) => <li>{item}</li>)}
       </ul>
     </div>
+  </section>
+
+  <section class="section" id="publications">
+    <header><span class="label">Publications</span></header>
+    <ul class="rows">
+      {publications.map((pub) => (
+        <li class="row">
+          <div>
+            <span class="when">{pub.year}</span>
+            <span class="what">
+              <strong><a href={pub.href}>{pub.title}</a></strong>
+              <p>
+                {pub.authors.map((name, i) => (
+                  <Fragment>{i > 0 && ", "}{name === profile.name ? <span class="me">{name}</span> : name}</Fragment>
+                ))}
+              </p>
+              <p class="venue">{pub.venue}</p>
+            </span>
+            <span class="go">
+              {pub.links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>)}
+            </span>
+          </div>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <section class="section" id="projects">

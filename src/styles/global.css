@@ -577,6 +577,16 @@ a:hover {
   font-size: 0.93rem;
 }
 
+.row .what .me {
+  color: var(--text);
+  font-weight: 560;
+  white-space: nowrap;
+}
+
+.row .what .venue {
+  font-style: italic;
+}
+
 .row .go {
   font-family: var(--mono);
   font-size: 0.78rem;
