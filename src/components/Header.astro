@@ -11,10 +11,12 @@ const current = (href) => (href === "/" ? path === "/" : path.startsWith(href));
 
 <header class="site-header">
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="Mert Coşkuner, home">
-      <img class="mark" src="/favicon.svg" alt="" width="32" height="32" />
-      <span class="name">Mert Coşkuner</span>
-    </a>
+    {path !== "/" && (
+      <a class="wordmark" href="/" aria-label="Mert Coşkuner, home">
+        <img class="mark" src="/favicon.svg" alt="" width="32" height="32" />
+        <span class="name">Mert Coşkuner</span>
+      </a>
+    )}
     <nav class="nav" aria-label="Main">
       {items.map((item) => (
         <a href={item.href} class={item.href === "/" ? "home" : undefined} aria-current={current(item.href) ? "page" : undefined}>{item.label}</a>
