@@ -159,7 +159,7 @@ export const experience = [
   {
     when: "Jul 2024 – Jan 2025",
     title: "Research Intern",
-    org: "Ericsson",
+    org: "Ericsson Research Türkiye",
     place: "Istanbul",
     detail:
       "Signal identification with gradient-boosted models and CNNs, CNN-based DDoS detection, and anomaly detection for federated-learning security.",
