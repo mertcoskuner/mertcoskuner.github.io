@@ -396,6 +396,7 @@ a:hover {
 .section > header .label {
   position: sticky;
   top: 5rem;
+  white-space: nowrap;
 }
 
 .section h2 {
