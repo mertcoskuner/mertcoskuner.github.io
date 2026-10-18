@@ -117,15 +117,6 @@ export const projects = [
     tags: ["ablation", "reproducibility"],
     image: "/images/projects/mlp-ablation-suite.webp",
   },
-  {
-    slug: "undergrad-projects",
-    title: "Undergraduate projects",
-    year: "2020–2025",
-    area: "Coursework",
-    blurb:
-      "Course projects from my BSc: data structures and algorithms, operating systems, databases, networking, a mobile app with a Spring Boot backend, and machine learning.",
-    tags: ["C++", "systems", "full stack"],
-  },
 ];
 
 export const experience = [
