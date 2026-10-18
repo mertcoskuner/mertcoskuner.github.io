@@ -4,9 +4,9 @@ export const profile = {
   location: "Istanbul, Türkiye",
   email: "mertcoskuner@gmail.com",
   summary:
-    "I work on trustworthy and efficient machine learning: how learning systems behave under attack and under constraints. My recent projects study Byzantine-robust and differentially private federated learning, backdoors in graph neural networks, adversarial robustness and distillation, and how 4-bit quantization treats multilingual language models.",
+    "I work on trustworthy and efficient machine learning: how learning systems behave under attack and under constraints. My recent projects cover Byzantine-robust and differentially private federated learning, backdoor attacks on graph neural networks, adversarial robustness and knowledge distillation, and 4-bit quantization of multilingual language models.",
   now:
-    "Today I am a researcher at TÜBİTAK BİLGEM and a teaching assistant for CS404 Artificial Intelligence at Sabancı University.",
+    "I am currently a researcher at TÜBİTAK BİLGEM and a teaching assistant for Security, Privacy and Robustness in Machine Learning at Sabancı University.",
 };
 
 export const links = [
@@ -57,25 +57,25 @@ export const projects = [
     featured: true,
   },
   {
-    slug: "robust-distillation",
-    title: "Robust distillation",
+    slug: "cnn-robustness-cifar10",
+    title: "CNN robustness on CIFAR-10",
     year: "2026",
     area: "Adversarial robustness",
     blurb:
       "Corruption and adversarial robustness of transfer-learned and distilled CNNs on CIFAR-10/-C: AugMix with JSD, PGD, Grad-CAM, and how a teacher's adversarial examples transfer to its students.",
     tags: ["robustness", "distillation", "CIFAR-10-C"],
-    image: "/images/projects/robust-distillation.webp",
+    image: "/images/projects/cnn-robustness-cifar10.webp",
     featured: true,
   },
   {
-    slug: "neural-feedback-codes",
-    title: "Neural feedback codes",
+    slug: "transformer-feedback-channel-coding",
+    title: "Transformer feedback channel coding",
     year: "2026",
     area: "Learning for communication",
     blurb:
       "End-to-end learned channel codes for the AWGN channel with noiseless feedback: a transformer transmitter and receiver trained through the channel, with ablations over rounds, noise and capacity.",
     tags: ["transformers", "channel coding"],
-    image: "/images/projects/neural-feedback-codes.webp",
+    image: "/images/projects/transformer-feedback-channel-coding.webp",
     featured: true,
   },
   {
@@ -136,6 +136,14 @@ export const experience = [
       "Signal identification with gradient-boosted models and CNNs, CNN-based DDoS detection, and anomaly detection for federated-learning security.",
   },
   {
+    when: "Oct 2023 – Jan 2024",
+    title: "Undergraduate Research Assistant",
+    org: "PURE, Program for Undergraduate Research",
+    place: "Istanbul",
+    detail:
+      "Circuits and systems performance benchmarking with machine learning: NLP-based extraction of results from papers on CMOS, SiGe and GaN circuits, and a comparison of the three technologies.",
+  },
+  {
     when: "Jan – Feb 2023",
     title: "Software Engineering Intern",
     org: "TÜBİTAK BİLGEM",
@@ -152,9 +160,15 @@ export const experience = [
 ];
 
 export const teaching = [
-  { when: "Oct 2025 – now", title: "Teaching Assistant", course: "CS404 Artificial Intelligence" },
-  { when: "Feb – Jun 2023", title: "Learning Assistant", course: "CS201 Programming Fundamentals" },
-  { when: "Feb – Jun 2022", title: "Learning Assistant", course: "Calculus II" },
+  {
+    when: "Fall 2026–2027",
+    title: "Teaching Assistant",
+    course: "EE48012 Security, Privacy and Robustness in Machine Learning",
+  },
+  { when: "Spring 2025–2026", title: "Teaching Assistant", course: "CS412 Machine Learning" },
+  { when: "Fall 2025–2026", title: "Teaching Assistant", course: "CS404 Artificial Intelligence" },
+  { when: "Spring 2022–2023", title: "Learning Assistant", course: "CS201 Programming Fundamentals" },
+  { when: "Spring 2021–2022", title: "Learning Assistant", course: "Calculus II" },
 ];
 
 export const education = [

@@ -316,14 +316,21 @@ a:hover {
   max-width: 40rem;
 }
 
-.hero .summary {
+.hero .summary,
+.hero .now {
   max-width: 40rem;
   font-size: 1.04rem;
+  text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 8 4 4;
+  text-wrap: pretty;
+}
+
+.hero .summary {
   margin: 0 0 0.9rem;
 }
 
 .hero .now {
-  max-width: 40rem;
   color: var(--muted);
   margin: 0;
 }
@@ -715,6 +722,12 @@ a:hover {
 }
 
 @media (max-width: 680px) {
+  .hero .summary,
+  .hero .now {
+    text-align: left;
+    hyphens: manual;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }

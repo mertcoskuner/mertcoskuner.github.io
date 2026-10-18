@@ -7,7 +7,7 @@ import { education, experience, interests, links, profile, projects, teaching } 
 const featured = projects.filter((project) => project.featured);
 const current = [
   { when: "2025 – now", title: "Researcher", org: "TÜBİTAK BİLGEM" },
-  { when: "2025 – now", title: "Teaching Assistant", org: "CS404 Artificial Intelligence" },
+  { when: "2025 – now", title: "Teaching Assistant", org: "EE48012 Security, Privacy and Robustness in Machine Learning" },
   { when: "2025 – 2027", title: "MSc, Computer Science & Engineering", org: "Sabancı University" },
 ];
 const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
