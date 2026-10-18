@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { links, profile } from "../data/site.js";
+
+const posts = await getCollection("writing", ({ data }) => !data.draft);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color: var(--text); font-weight: 560;">{profile.name}</strong>
+        <p style="margin: 0.4rem 0 0; max-width: 26rem;">
+          Trustworthy and efficient machine learning. MSc student at Sabancı University.
+        </p>
+      </div>
+      <div>
+        <h4 class="label">Site</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/projects">Projects</a></li>
+          {posts.length > 0 && <li><a href="/writing">Writing</a></li>}
+        </ul>
+      </div>
+      <div>
+        <h4 class="label">Elsewhere</h4>
+        <ul>
+          {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="base mono">
+      <span>© {year} {profile.name}</span>
+      <span>{profile.location}</span>
+    </div>
+  </div>
+</footer>

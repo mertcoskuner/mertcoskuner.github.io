@@ -1,0 +1,133 @@
+---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import { education, experience, interests, links, profile, projects, teaching } from "../data/site.js";
+
+const featured = projects.filter((project) => project.featured);
+const current = [
+  { when: "2025 – now", title: "Researcher", org: "TÜBİTAK BİLGEM" },
+  { when: "2025 – now", title: "Teaching Assistant", org: "CS404 Artificial Intelligence" },
+  { when: "2025 – 2027", title: "MSc, Computer Science & Engineering", org: "Sabancı University" },
+];
+const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
+---
+
+<Base>
+  <section class="hero">
+    <div class="hero-main">
+      <span class="label">{profile.location}</span>
+      <h1>{profile.name}</h1>
+      <p class="role">{profile.role}</p>
+      <p class="summary">{profile.summary}</p>
+      <p class="now">{profile.now}</p>
+      <div class="links">
+        {links.map((link, i) => (
+          <a class={i === 0 ? "pill solid" : "pill"} href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+        ))}
+      </div>
+    </div>
+    <aside class="now-card" aria-label="Currently">
+      <span class="label">Now</span>
+      <dl>
+        {current.map((item) => (
+          <div>
+            <dt class="mono">{item.when}</dt>
+            <dd><strong>{item.title}</strong><span>{item.org}</span></dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
+  </section>
+
+  <section class="section" id="research">
+    <header><span class="label">Research</span></header>
+    <div class="prose">
+      <h2>Interests</h2>
+      <ul class="interests">
+        {interests.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <header><span class="label">Selected work</span></header>
+    <div>
+      <div class="grid">
+        {featured.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <p class="more"><a class="pill" href="/projects">All projects <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section" id="writing">
+      <header><span class="label">Writing</span></header>
+      <ul class="rows">
+        {posts.slice(0, 5).map((post) => (
+          <li class="row">
+            <a href={`/writing/${post.id}`}>
+              <span class="when">{fmt(post.data.date)}</span>
+              <span class="what"><strong>{post.data.title}</strong><p>{post.data.description}</p></span>
+              <span class="go">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="section" id="experience">
+    <header><span class="label">Experience</span></header>
+    <ul class="rows">
+      {experience.map((item) => (
+        <li class="row">
+          <div>
+            <span class="when">{item.when}</span>
+            <span class="what">
+              <strong>{item.title}</strong> <span class="org">· {item.org}</span>
+              <p>{item.detail}</p>
+            </span>
+            <span class="go">{item.place}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section" id="teaching">
+    <header><span class="label">Teaching</span></header>
+    <ul class="rows">
+      {teaching.map((item) => (
+        <li class="row">
+          <div>
+            <span class="when">{item.when}</span>
+            <span class="what"><strong>{item.title}</strong> <span class="org">· {item.course}</span></span>
+            <span class="go">Sabancı</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section" id="education">
+    <header><span class="label">Education</span></header>
+    <ul class="rows">
+      {education.map((item) => (
+        <li class="row">
+          <div>
+            <span class="when">{item.when}</span>
+            <span class="what">
+              <strong>{item.title}</strong> <span class="org">· {item.org}</span>
+              {item.detail && <p>{item.detail}</p>}
+            </span>
+            <span class="go">Istanbul</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import { projects } from "../data/site.js";
+---
+
+<Base title="Projects" description="Research code and course projects by Mert Coşkuner.">
+  <section class="page-head">
+    <span class="label">Projects</span>
+    <h1>Code and experiments</h1>
+    <p>Research code with its results and figures, plus earlier coursework. Every entry links to its repository.</p>
+  </section>
+
+  <section class="section">
+    <header><span class="label">All</span></header>
+    <ul class="rows">
+      {projects.map((project) => (
+        <li class="row">
+          <a href={`https://github.com/mertcoskuner/${project.slug}`}>
+            <span class="when">{project.year}</span>
+            <span class="what">
+              <strong>{project.title}</strong> <span class="org">· {project.area}</span>
+              <p>{project.blurb}</p>
+              <span class="tags">{project.tags.map((tag) => <span class="tag">{tag}</span>)}</span>
+            </span>
+            <span class="go">GitHub ↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

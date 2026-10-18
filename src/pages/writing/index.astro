@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
+---
+
+<Base title="Writing" description="Notes on machine learning research by Mert Coşkuner.">
+  <section class="page-head">
+    <span class="label">Writing</span>
+    <h1>Notes</h1>
+    <p>Notes on the research and engineering behind my projects.</p>
+  </section>
+  <section class="section">
+    <header><span class="label">{String(posts.length).padStart(2, "0")} posts</span></header>
+    {posts.length === 0 ? (
+      <p class="empty">Nothing published yet.</p>
+    ) : (
+      <ul class="rows">
+        {posts.map((post) => (
+          <li class="row">
+            <a href={`/writing/${post.id}`}>
+              <span class="when">{fmt(post.data.date)}</span>
+              <span class="what"><strong>{post.data.title}</strong><p>{post.data.description}</p></span>
+              <span class="go">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>

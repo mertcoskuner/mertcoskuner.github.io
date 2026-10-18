@@ -1,0 +1,23 @@
+---
+const { project } = Astro.props;
+const href = `https://github.com/mertcoskuner/${project.slug}`;
+---
+
+<a class="card" href={href}>
+  {project.image && (
+    <figure>
+      <img src={project.image} alt={`Figure from ${project.title}`} loading="lazy" width="960" height="600" />
+    </figure>
+  )}
+  <div class="body">
+    <div class="meta mono">
+      <span>{project.area}</span>
+      <span>{project.year}</span>
+    </div>
+    <h3>{project.title}</h3>
+    <p>{project.blurb}</p>
+    <div class="tags">
+      {project.tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+  </div>
+</a>
