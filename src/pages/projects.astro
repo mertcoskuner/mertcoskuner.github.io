@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { projects } from "../data/site.js";
+import { external } from "../lib/links.js";
 ---
 
 <Base title="Projects" description="Research code by Mert Coşkuner.">
@@ -15,7 +16,7 @@ import { projects } from "../data/site.js";
     <ul class="rows">
       {projects.map((project) => (
         <li class="row">
-          <a href={`https://github.com/mertcoskuner/${project.slug}`}>
+          <a href={`https://github.com/mertcoskuner/${project.slug}`} {...external(`https://github.com/mertcoskuner/${project.slug}`)}>
             <span class="when">{project.year}</span>
             <span class="what">
               <strong>{project.title}</strong> <span class="org">· {project.area}</span>

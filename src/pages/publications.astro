@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, publications } from "../data/site.js";
+import { external } from "../lib/links.js";
+
+const years = [...new Set(publications.map((pub) => pub.year))];
+---
+
+<Base title="Publications" description="Publications by Mert Coşkuner.">
+  <section class="page-head">
+    <span class="label">Publications</span>
+    <h1>Publications</h1>
+    <p>Peer-reviewed papers, newest first.</p>
+  </section>
+  {years.map((year) => (
+    <section class="section">
+      <header><span class="label">{year}</span></header>
+      <ul class="pubs">
+        {publications
+          .filter((pub) => pub.year === year)
+          .map((pub) => (
+            <li class="pub">
+              <h3><a href={pub.href} {...external(pub.href)}>{pub.title}</a></h3>
+              <p class="authors">
+                {pub.authors.map((name, i) => (
+                  <Fragment>{i > 0 && ", "}{name === profile.name ? <span class="me">{name}</span> : name}</Fragment>
+                ))}
+              </p>
+              <p class="venue">{pub.venue}{pub.pages && `, pp. ${pub.pages}`}</p>
+              <div class="pub-links">
+                <a class="pill" href={pub.href} {...external(pub.href)}>Paper <span aria-hidden="true">↗</span></a>
+                {pub.links.map((link) => (
+                  <a class="pill" href={link.href} {...external(link.href)}>{link.label} <span aria-hidden="true">↗</span></a>
+                ))}
+                {pub.bibtex && (
+                  <details class="bibtex">
+                    <summary class="pill">BibTeX</summary>
+                    <pre><code>{pub.bibtex}</code></pre>
+                  </details>
+                )}
+              </div>
+            </li>
+          ))}
+      </ul>
+    </section>
+  ))}
+</Base>

@@ -2,16 +2,19 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 export async function GET(context) {
-  const posts = await getCollection("writing", ({ data }) => !data.draft);
+  const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
   return rss({
-    title: "Mert Coşkuner · Writing",
+    title: "Mert Coşkuner · Blog",
     description: "Notes on machine learning research.",
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.date,
-      link: `/writing/${post.id}/`,
+      categories: post.data.tags,
+      link: `/blog/${post.id}/`,
     })),
   });
 }

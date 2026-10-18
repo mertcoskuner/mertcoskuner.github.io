@@ -1,12 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-
-const posts = await getCollection("writing", ({ data }) => !data.draft);
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const items = [
   { href: "/", label: "Home" },
+  { href: "/publications", label: "Publications" },
   { href: "/projects", label: "Projects" },
-  ...(posts.length ? [{ href: "/writing", label: "Writing" }] : []),
+  { href: "/blog", label: "Blog" },
 ];
 const current = (href) => (href === "/" ? path === "/" : path.startsWith(href));
 ---

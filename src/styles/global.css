@@ -75,6 +75,16 @@ img {
   display: block;
 }
 
+main p,
+.post-body li,
+.interests li,
+.site-footer p {
+  text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+  text-wrap: pretty;
+}
+
 a {
   color: inherit;
   text-decoration-line: underline;
@@ -320,10 +330,6 @@ a:hover {
 .hero .now {
   max-width: 40rem;
   font-size: 1.04rem;
-  text-align: justify;
-  hyphens: auto;
-  hyphenate-limit-chars: 8 4 4;
-  text-wrap: pretty;
 }
 
 .hero .summary {
@@ -601,11 +607,19 @@ a:hover {
   margin-top: 1.5rem;
 }
 
-/* writing */
+/* blog */
 
 .post-header {
   padding: clamp(3rem, 8vw, 5rem) 0 1.5rem;
   max-width: 44rem;
+}
+
+.post-header a.label {
+  text-decoration: none;
+}
+
+.post-header a.label:hover {
+  color: var(--accent);
 }
 
 .post-header h1 {
@@ -616,30 +630,264 @@ a:hover {
   margin: 1rem 0 0.75rem;
 }
 
+.post-lede {
+  color: var(--muted);
+  font-size: 1.08rem;
+  margin: 0 0 1rem;
+}
+
+.post-meta {
+  color: var(--faint);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.row .what .post-meta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.post-header .tags {
+  margin-top: 1rem;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
 .post-body {
   max-width: 44rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
   font-size: 1.04rem;
+}
+
+.post-body > :first-child {
+  margin-top: 0;
+}
+
+.post-body p,
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.15rem;
+}
+
+.post-body li + li {
+  margin-top: 0.35rem;
 }
 
 .post-body h2 {
   font-size: 1.35rem;
+  font-weight: 560;
   letter-spacing: -0.02em;
-  margin: 2.5rem 0 0.75rem;
+  margin: 2.6rem 0 0.8rem;
+}
+
+.post-body h3 {
+  font-size: 1.12rem;
+  font-weight: 560;
+  margin: 2rem 0 0.6rem;
+}
+
+.post-body a {
+  text-decoration-color: var(--accent);
+}
+
+.post-body blockquote {
+  margin: 1.6rem 0;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+}
+
+.post-body hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+.post-body img {
+  height: auto;
+  margin: 1.6rem auto;
+  border-radius: 10px;
+}
+
+.post-body table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0 0 1.4rem;
+  font-size: 0.93rem;
+}
+
+.post-body th,
+.post-body td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0.9rem 0.5rem 0;
+  text-align: left;
 }
 
 .post-body pre {
+  background: var(--surface) !important;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 1.4rem;
+}
+
+.post-body code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.post-body :not(pre) > code {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.08em 0.35em;
+}
+
+:root[data-theme="dark"] .astro-code,
+:root[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .astro-code,
+  :root:not([data-theme="light"]) .astro-code span {
+    color: var(--shiki-dark) !important;
+  }
+}
+
+.post-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+  margin: 1.4rem 0;
+}
+
+.post-body .footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.post-nav {
+  max-width: 44rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+}
+
+.post-nav a {
+  display: grid;
+  gap: 0.3rem;
+  text-decoration: none;
+}
+
+.post-nav a.newer {
+  justify-items: end;
+  text-align: right;
+}
+
+.post-nav a:hover strong {
+  color: var(--accent);
+}
+
+.back {
+  margin: 2rem 0 0;
+}
+
+/* publications */
+
+.pubs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+  max-width: 46rem;
+}
+
+.pub h3 {
+  font-size: 1.08rem;
+  font-weight: 560;
+  line-height: 1.4;
+  margin: 0 0 0.4rem;
+}
+
+.pub .authors,
+.pub .venue {
+  margin: 0 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.pub .venue {
+  font-style: italic;
+}
+
+.pub .me {
+  color: var(--text);
+  font-weight: 560;
+  white-space: nowrap;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.pub {
+  min-width: 0;
+}
+
+.bibtex[open] {
+  flex-basis: 100%;
+  min-width: 0;
+}
+
+.bibtex summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.bibtex summary::-webkit-details-marker {
+  display: none;
+}
+
+.bibtex pre {
+  max-width: 100%;
+  margin: 0.75rem 0 0;
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: 10px;
   padding: 1rem;
   overflow-x: auto;
-  font-size: 0.85rem;
-}
-
-.post-body code {
   font-family: var(--mono);
-  font-size: 0.9em;
+  font-size: 0.78rem;
+  line-height: 1.6;
 }
 
 .empty {
@@ -732,10 +980,13 @@ a:hover {
 }
 
 @media (max-width: 680px) {
-  .hero .summary,
-  .hero .now {
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .post-nav a.newer {
+    justify-items: start;
     text-align: left;
-    hyphens: manual;
   }
 
   .grid {
@@ -749,6 +1000,21 @@ a:hover {
 
   .row .when {
     grid-column: 1 / -1;
+  }
+
+  .row > div .when {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .row > div .go {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .row > div .what {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   .site-footer .cols {

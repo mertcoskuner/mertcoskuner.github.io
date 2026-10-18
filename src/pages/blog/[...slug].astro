@@ -1,0 +1,61 @@
+---
+import "katex/dist/katex.min.css";
+import Base from "../../layouts/Base.astro";
+import { render } from "astro:content";
+import { formatDate, getPosts, readingTime } from "../../lib/blog.js";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, updated, tags, lang, draft } = post.data;
+---
+
+<Base title={title} description={description}>
+  <article>
+    <header class="post-header">
+      <a class="label" href="/blog/">Blog</a>
+      <h1 lang={lang}>{title}</h1>
+      <p class="post-lede" lang={lang}>{description}</p>
+      <p class="post-meta mono">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <span>· {readingTime(post.body)} min read</span>
+        {updated && <span>· updated {formatDate(updated)}</span>}
+        {draft && <span class="badge">Draft</span>}
+      </p>
+      {tags.length > 0 && (
+        <div class="tags">
+          {tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      )}
+    </header>
+    <div class="post-body" lang={lang}>
+      <Content />
+    </div>
+    <nav class="post-nav" aria-label="More posts">
+      {older ? (
+        <a href={`/blog/${older.id}/`}>
+          <span class="label">Older</span>
+          <strong>{older.data.title}</strong>
+        </a>
+      ) : (
+        <span />
+      )}
+      {newer ? (
+        <a class="newer" href={`/blog/${newer.id}/`}>
+          <span class="label">Newer</span>
+          <strong>{newer.data.title}</strong>
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+    <p class="back"><a class="pill" href="/blog/">← All posts</a></p>
+  </article>
+</Base>

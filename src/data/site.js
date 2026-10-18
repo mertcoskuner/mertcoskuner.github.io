@@ -36,8 +36,18 @@ export const publications = [
       "Deniz Gündüz",
     ],
     venue: "IEEE European Symposium on Security and Privacy (EuroS&P 2026)",
+    pages: "712–735",
     href: "https://doi.org/10.1109/EuroSP68448.2026.00052",
     links: [{ label: "arXiv", href: "https://arxiv.org/abs/2404.06230" }],
+    bibtex: `@inproceedings{ozfatura2026aggressive,
+  title     = {Aggressive, Imperceptible, or Both: Architecture-Aware Hybrid Byzantines in Federated Learning},
+  author    = {Özfatura, Emre and Özfatura, Kerem and Büyükateş, Baturalp and Coşkuner, Mert and Küpçü, Alptekin and Gündüz, Deniz},
+  booktitle = {2026 IEEE 11th European Symposium on Security and Privacy (EuroS\\&P)},
+  pages     = {712--735},
+  year      = {2026},
+  publisher = {IEEE},
+  doi       = {10.1109/EuroSP68448.2026.00052}
+}`,
   },
 ];
 
@@ -165,7 +175,7 @@ export const experience = [
   {
     when: "Jan – Feb 2023",
     title: "Software Engineering Intern",
-    org: "TÜBİTAK BİLGEM",
+    org: "TÜBİTAK BİLGEM, Informatics and Information Security Research Center",
     place: "Kocaeli",
     detail: "Blockchain development for an NFT marketplace.",
   },
@@ -202,5 +212,11 @@ export const education = [
     title: "BSc, Computer Science; minor in Business Analytics",
     org: "Sabancı University",
     detail: "Graduated with distinction; on the Dean's list in every term.",
+  },
+  {
+    when: "2015 – 2020",
+    title: "High school diploma, French Baccalauréat equivalent",
+    org: "Notre Dame de Sion French High School",
+    detail: "",
   },
 ];

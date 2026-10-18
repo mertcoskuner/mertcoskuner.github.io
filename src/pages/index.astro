@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { getCollection } from "astro:content";
+import { formatDate, getPosts } from "../lib/blog.js";
+import { external } from "../lib/links.js";
 import { education, experience, interests, links, profile, projects, publications, teaching } from "../data/site.js";
 
 const featured = projects.filter((project) => project.featured);
@@ -10,10 +11,7 @@ const current = [
   { when: "2025 – now", title: "Teaching Assistant", org: "EE48012 Security, Privacy and Robustness in Machine Learning" },
   { when: "2025 – 2027", title: "MSc, Computer Science & Engineering", org: "Sabancı University" },
 ];
-const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
-const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
+const posts = (await getPosts()).filter((post) => !post.data.draft);
 ---
 
 <Base>
@@ -26,7 +24,7 @@ const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
       <p class="now">{profile.now}</p>
       <div class="links">
         {links.map((link, i) => (
-          <a class={i === 0 ? "pill solid" : "pill"} href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+          <a class={i === 0 ? "pill solid" : "pill"} href={link.href} {...external(link.href)}>{link.label} <span aria-hidden="true">↗</span></a>
         ))}
       </div>
     </div>
@@ -55,27 +53,30 @@ const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
 
   <section class="section" id="publications">
     <header><span class="label">Publications</span></header>
-    <ul class="rows">
-      {publications.map((pub) => (
-        <li class="row">
-          <div>
-            <span class="when">{pub.year}</span>
-            <span class="what">
-              <strong><a href={pub.href}>{pub.title}</a></strong>
-              <p>
-                {pub.authors.map((name, i) => (
-                  <Fragment>{i > 0 && ", "}{name === profile.name ? <span class="me">{name}</span> : name}</Fragment>
-                ))}
-              </p>
-              <p class="venue">{pub.venue}</p>
-            </span>
-            <span class="go">
-              {pub.links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>)}
-            </span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul class="rows">
+        {publications.map((pub) => (
+          <li class="row">
+            <div>
+              <span class="when">{pub.year}</span>
+              <span class="what">
+                <strong><a href={pub.href} {...external(pub.href)}>{pub.title}</a></strong>
+                <p>
+                  {pub.authors.map((name, i) => (
+                    <Fragment>{i > 0 && ", "}{name === profile.name ? <span class="me">{name}</span> : name}</Fragment>
+                  ))}
+                </p>
+                <p class="venue">{pub.venue}</p>
+              </span>
+              <span class="go">
+                {pub.links.map((link) => <a href={link.href} {...external(link.href)}>{link.label} <span aria-hidden="true">↗</span></a>)}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="more"><a class="pill" href="/publications">All publications <span aria-hidden="true">→</span></a></p>
+    </div>
   </section>
 
   <section class="section" id="projects">
@@ -89,19 +90,22 @@ const fmt = (date) => date.toISOString().slice(0, 10).replaceAll("-", ".");
   </section>
 
   {posts.length > 0 && (
-    <section class="section" id="writing">
-      <header><span class="label">Writing</span></header>
-      <ul class="rows">
-        {posts.slice(0, 5).map((post) => (
-          <li class="row">
-            <a href={`/writing/${post.id}`}>
-              <span class="when">{fmt(post.data.date)}</span>
-              <span class="what"><strong>{post.data.title}</strong><p>{post.data.description}</p></span>
-              <span class="go">→</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+    <section class="section" id="blog">
+      <header><span class="label">Blog</span></header>
+      <div>
+        <ul class="rows">
+          {posts.slice(0, 3).map((post) => (
+            <li class="row">
+              <a href={`/blog/${post.id}/`}>
+                <span class="when">{formatDate(post.data.date)}</span>
+                <span class="what"><strong>{post.data.title}</strong><p>{post.data.description}</p></span>
+                <span class="go">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="more"><a class="pill" href="/blog">All posts <span aria-hidden="true">→</span></a></p>
+      </div>
     </section>
   )}
 

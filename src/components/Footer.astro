@@ -1,8 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import { links, profile } from "../data/site.js";
+import { external } from "../lib/links.js";
 
-const posts = await getCollection("writing", ({ data }) => !data.draft);
 const year = new Date().getFullYear();
 ---
 
@@ -19,14 +18,16 @@ const year = new Date().getFullYear();
         <h4 class="label">Site</h4>
         <ul>
           <li><a href="/">Home</a></li>
+          <li><a href="/publications">Publications</a></li>
           <li><a href="/projects">Projects</a></li>
-          {posts.length > 0 && <li><a href="/writing">Writing</a></li>}
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
         </ul>
       </div>
       <div>
         <h4 class="label">Elsewhere</h4>
         <ul>
-          {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          {links.map((link) => <li><a href={link.href} {...external(link.href)}>{link.label}</a></li>)}
         </ul>
       </div>
     </div>

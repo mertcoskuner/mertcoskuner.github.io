@@ -1,0 +1,48 @@
+---
+import Base from "../../layouts/Base.astro";
+import { formatDate, getPosts, readingTime } from "../../lib/blog.js";
+
+const posts = await getPosts();
+const years = [...new Set(posts.map((post) => post.data.date.getUTCFullYear()))];
+---
+
+<Base title="Blog" description="Notes on machine learning research by Mert Coşkuner.">
+  <section class="page-head">
+    <span class="label">Blog</span>
+    <h1>Blog</h1>
+    <p>Notes on machine learning research and the engineering behind my projects.</p>
+    <p class="more"><a class="pill" href="/rss.xml">RSS feed <span aria-hidden="true">↗</span></a></p>
+  </section>
+  {posts.length === 0 ? (
+    <section class="section">
+      <header><span class="label">Posts</span></header>
+      <p class="empty">No posts yet.</p>
+    </section>
+  ) : (
+    years.map((year) => (
+      <section class="section">
+        <header><span class="label">{year}</span></header>
+        <ul class="rows">
+          {posts
+            .filter((post) => post.data.date.getUTCFullYear() === year)
+            .map((post) => (
+              <li class="row">
+                <a href={`/blog/${post.id}/`}>
+                  <span class="when">{formatDate(post.data.date, { day: "2-digit", month: "short" })}</span>
+                  <span class="what">
+                    <strong>{post.data.title}</strong>
+                    {post.data.draft && <span class="badge">Draft</span>}
+                    <p>{post.data.description}</p>
+                    <span class="post-meta mono">
+                      {readingTime(post.body)} min read{post.data.tags.length > 0 && ` · ${post.data.tags.join(", ")}`}
+                    </span>
+                  </span>
+                  <span class="go">→</span>
+                </a>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  )}
+</Base>

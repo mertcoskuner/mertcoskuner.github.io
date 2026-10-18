@@ -1,9 +1,11 @@
 ---
+import { external } from "../lib/links.js";
+
 const { project } = Astro.props;
 const href = `https://github.com/mertcoskuner/${project.slug}`;
 ---
 
-<a class="card" href={href}>
+<a class="card" href={href} {...external(href)}>
   {project.image && (
     <figure>
       <img src={project.image} alt={`Figure from ${project.title}`} loading="lazy" width="960" height="600" />
