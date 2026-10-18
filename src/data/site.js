@@ -11,6 +11,10 @@ export const profile = {
 
 export const links = [
   { label: "GitHub", href: "https://github.com/mertcoskuner" },
+  {
+    label: "Google Scholar",
+    href: "https://scholar.google.com/citations?view_op=search_authors&mauthors=Mert+Co%C5%9Fkuner",
+  },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/mertcoskuner/" },
   { label: "Email", href: "mailto:mertcoskuner@gmail.com" },
 ];
